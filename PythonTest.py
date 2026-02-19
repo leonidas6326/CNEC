@@ -55,15 +55,16 @@ st.title("5-Year Overall Survival Risk Calculator For Patients with Cervical Neu
 # User inputs
 age = st.selectbox("Age", [i for i in range(18, 101)])
 seer_stage = st.selectbox("SEER Stage", ["Localized", "Regional", "Distant"])
-hystectomy = st.selectbox("Hysterectomy", ["Done", "Not done"])
+hysterectomy = st.selectbox("Hysterectomy", ["Done", "Not done"])
 chemotherapy = st.selectbox("Chemotherapy", ["Done", "Not done"])
 
 # Calculate points and survival probability
-points = calculate_points(age, sex, seer_stage, hysterectomy, chemotherapy)
+points = calculate_points(age, seer_stage, hysterectomy, chemotherapy)
 survival_probability = calculate_survival_probability(points)
 
 # Display results
 st.write(f"Total Risk Points: {points}")
 st.write(f"Estimated 5-Year Survival Probability: {survival_probability * 100:.2f}%")
+
 
 
